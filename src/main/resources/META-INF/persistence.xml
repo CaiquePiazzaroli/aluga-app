@@ -1,0 +1,30 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="aluga.app">
+        <description>Unidade de Persistencia Aluga App</description>
+
+        <class>model.Locatario</class>
+
+        <properties>
+            <!-- Url para o banco de dados -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/aluga_app_db" />
+
+            <!-- Usuario -->
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+
+            <!-- Senha -->
+            <property name="jakarta.persistence.jdbc.password" value="Mysql@010203" />
+
+            <!-- Exporta automaticamente as classes para o banco de dados (cria as tabelas) -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="create-drop" />
+
+            <property name="hibernate.show_sql" value="true" /> <!-- Exibe ou nao o sql no terminal -->
+            <property name="hibernate.format_sql" value="true" /> <!-- Formata ou nao o sql no terminal -->
+            <property name="hibernate.highlight_sql" value="true" /> <!-- Coloca cor ou nao o sql no terminal -->
+        </properties>
+    </persistence-unit>
+
+</persistence>
