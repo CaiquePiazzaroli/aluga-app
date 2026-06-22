@@ -18,8 +18,8 @@
             <!-- Senha -->
             <property name="jakarta.persistence.jdbc.password" value="Mysql@010203" />
 
-            <!-- Exporta automaticamente as classes para o banco de dados (cria as tabelas) -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="create-drop" />
+            <!-- Exporta automaticamente as classes para o banco de dados (cria as tabelas) value tem que ser igual a create-->
+            <property name="jakarta.persistence.schema-generation.database.action" value="none" />
 
             <property name="hibernate.show_sql" value="true" /> <!-- Exibe ou nao o sql no terminal -->
             <property name="hibernate.format_sql" value="true" /> <!-- Formata ou nao o sql no terminal -->
