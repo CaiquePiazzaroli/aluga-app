@@ -1,7 +1,17 @@
+import dao.ItemDao;
+import dao.LocacaoDao;
+import dao.LocadorDao;
+import dao.LocatarioDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import model.Item;
+import model.Locacao;
+import model.Locador;
 import model.Locatario;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class AlugaApp {
 
@@ -9,45 +19,38 @@ public class AlugaApp {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("aluga.app");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
+        // Salvando um locador no banco de dados
+        //LocadorDao locadorDao = new LocadorDao(entityManager);
+        //Locador locador = new Locador("Caique Mendes");
+        //locadorDao.salvar(locador);
 
-        // Salvando um Locatario (CREATE)
-//        Locatario locatario1 = new Locatario();
-//        // locatario1.setId(7985L); -> Sem ID
-//        locatario1.setNome("Jose Roberto Gomes");
-//
-//        entityManager.getTransaction().begin();
-//        entityManager.persist(locatario1);
-//        entityManager.getTransaction().commit();
+        // Salvando um locatario
+        //LocatarioDao locatarioDao = new LocatarioDao(entityManager);
+        //Locatario locatario = new Locatario("Joao Pereira");
+        //locatarioDao.salvar(locatario);
 
+        // Salvando um item
+        //ItemDao itemDao = new ItemDao(entityManager);
+        //Item item = new Item("Chave de Roda");
+        //itemDao.salvar(item);
 
-        // Salvando um Locatario (CREATE) mas usando Merge
-//        Locatario locatarioCriarComMerge = new Locatario();
-//        locatarioCriarComMerge.setNome("Matematico Pereira Portugues");
-//
-//        entityManager.getTransaction().begin();
-//        entityManager.merge(locatarioCriarComMerge);
-//        entityManager.getTransaction().commit();
+        // Salvando a locacao
+        LocacaoDao locacaoDao = new LocacaoDao(entityManager);
+//        Locador locador = entityManager.find(Locador.class, 1);
+//        Item item = entityManager.find(Item.class, 1);
+//        Locatario locatario = entityManager.find(Locatario.class, 1);
+//        Locacao novaLocacao = new Locacao(locador, locatario, item, new BigDecimal("40.00"), LocalDate.now());
+//        locacaoDao.salvar(novaLocacao);
 
-            // Atualizando um Locatario (UPDATE)
-//            Locatario locatarioAtualizar = new Locatario();
-//            locatarioAtualizar.setNome("Jose Almeida");
-//            locatarioAtualizar.setId(1L); // OBRIGATÓRIO PARA UPDATE
-//
-//            entityManager.getTransaction().begin();
-//            entityManager.merge(locatarioAtualizar);
-//            entityManager.getTransaction().commit();
+        // Buscando uma locacao
+        Locacao locacaoBanco = locacaoDao.buscar(1L);
 
-
-          // Buscando um Locatario por id (READ)
-//            Locatario l1 = entityManager.find(Locatario.class, 1);
-//            System.out.println(l1.getId());
-//            System.out.println(l1.getNome());
-
-        // Deletando um objeto (DELETE)
-        Locatario objetoExistente = entityManager.find(Locatario.class, 2);
-        entityManager.getTransaction().begin();
-        entityManager.remove(objetoExistente);
-        entityManager.getTransaction().commit();
+        // Exibindo dados da locacao
+        System.out.println("O locador foi: " + locacaoBanco.getLocador().getNome());
+        System.out.println("O locatario foi: " + locacaoBanco.getLocatario().getNome());
+        System.out.println("Na data: " + locacaoBanco.getData().toString());
+        System.out.println("Item: " + locacaoBanco.getItem().getDescricao());
+        System.out.println("Valor: " + locacaoBanco.getPreco());
 
 
         entityManager.close();

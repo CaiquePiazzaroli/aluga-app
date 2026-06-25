@@ -7,6 +7,9 @@
         <description>Unidade de Persistencia Aluga App</description>
 
         <class>model.Locatario</class>
+        <class>model.Item</class>
+        <class>model.Locacao</class>
+        <class>model.Locador</class>
 
         <properties>
             <!-- Url para o banco de dados -->
@@ -19,7 +22,8 @@
             <property name="jakarta.persistence.jdbc.password" value="Mysql@010203" />
 
             <!-- Exporta automaticamente as classes para o banco de dados (cria as tabelas) value tem que ser igual a create-->
-            <property name="jakarta.persistence.schema-generation.database.action" value="none" />
+<!--            <property name="jakarta.persistence.schema-generation.database.action" value="none" />-->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
 
             <property name="hibernate.show_sql" value="true" /> <!-- Exibe ou nao o sql no terminal -->
             <property name="hibernate.format_sql" value="true" /> <!-- Formata ou nao o sql no terminal -->

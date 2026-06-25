@@ -3,21 +3,21 @@ package model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "locatarios")
-public class Locatario {
+@Table(name = "locadores")
+public class Locador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_locatario")
+    @Column(name = "id_locador")
     private Long id;
 
-    @Column(name = "nome_locatario")
+    @Column(name = "nome_locador")
     private String nome;
 
+    public Locador() {
+    }
 
-    public Locatario() {}
-
-    public Locatario(String nome) {
+    public Locador(String nome) {
         this.nome = nome;
     }
 
